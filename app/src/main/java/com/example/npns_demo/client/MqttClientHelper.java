@@ -20,14 +20,14 @@ import java.io.UnsupportedEncodingException;
 
 public class MqttClientHelper {
 
-    private static final String TAG = MqttClientHelper.class.getCanonicalName();
+    private final String TAG = MqttClientHelper.class.getCanonicalName();
 
     private MqttAndroidClient mMqttClient;
 
     private boolean mConnectionState = false;
 
     //일단 MqttClientHelper object를 생성하면, broker와 connect를 시도한다.
-    public MqttClientHelper(Context context, @NonNull String hostUrl, @NonNull String clientId) throws MqttException {
+    public MqttClientHelper(Context context, @NonNull String hostUrl, @NonNull String clientId) {
 
         mMqttClient = new MqttAndroidClient(context, hostUrl, clientId);
 
