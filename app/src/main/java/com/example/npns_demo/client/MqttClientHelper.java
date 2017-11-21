@@ -24,7 +24,6 @@ public class MqttClientHelper {
 
     private MqttAndroidClient mMqttClient;
 
-    private boolean mConnectionState = false;
 
     //일단 MqttClientHelper object를 생성하면, broker와 connect를 시도한다.
     public MqttClientHelper(Context context, @NonNull String hostUrl, @NonNull String clientId) {
@@ -38,16 +37,14 @@ public class MqttClientHelper {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
                     mMqttClient.setBufferOpts(getDisconnectedOpt());
-                    mConnectionState = true;
 
-                    Log.d(TAG, "Success");
+                    Log.d(TAG, "Success connect");
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    mConnectionState = false;
 
-                    Log.d(TAG, "Failure " + exception.toString());
+                    Log.d(TAG, "Failure connect" + exception.toString());
                 }
             });
         } catch (MqttException e) {
@@ -72,11 +69,7 @@ public class MqttClientHelper {
     }
 
     public MqttAndroidClient getClient() {
-        if(mConnectionState){
-            return mMqttClient;
-        } else {
-            return null;
-        }
+        return mMqttClient;
     }
 
     public void publish(@NonNull MqttAndroidClient client, @NonNull String topic, int qos, @NonNull String msg)
@@ -85,7 +78,6 @@ public class MqttClientHelper {
         byte[] payload = msg.getBytes("UTF-8");
         MqttMessage message = new MqttMessage(payload);
 
-        //message.setId(80);
         message.setQos(qos);
         message.setRetained(true);
 
