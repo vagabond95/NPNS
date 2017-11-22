@@ -1,17 +1,17 @@
 package com.example.npns_demo.ui;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.example.npns_demo.R;
-import com.example.npns_demo.thrift.HelloCallBack;
+import com.example.npns_demo.service.MainService;
 import com.example.npns_demo.thrift.HelloService;
 import com.example.npns_demo.thrift.HelloServiceAPI;
+import com.example.npns_demo.util.UuidHelper;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.async.TAsyncClientManager;
@@ -28,6 +28,7 @@ import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 
 import java.io.IOException;
+import java.net.Socket;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,77 +57,50 @@ public class MainActivity extends AppCompatActivity {
 
     public void initView() {
 
-        mClientBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mClientBtn.setOnClickListener(v -> {
+            Thread thread = new Thread(() -> {
+                Log.d(TAG, "uuid : "+ UuidHelper.getUuid(getApplicationContext()));
 
-                Thread thread = new Thread(){
-                    @Override
-                    public void run() {
-                        super.run();
+                TTransport transport = new TSocket("localhost",9091);
+                try {
+                    transport.open();
+                    Log.d(TAG,"client : open!");
+                } catch (TTransportException e) {
+                    e.printStackTrace();
+                }
+                TProtocol protocol = new TBinaryProtocol(transport);
+                HelloService.Client client = new HelloService.Client(protocol);
+                try {
+                    Log.d(TAG, "client : send!");
+                    client.hello("client data!");
+                } catch (TException e) {
+                    e.printStackTrace();
+                }
+            });
 
-                       /* try {
-                            mProtocolFactory = new TCompactProtocol.Factory();
-                            mAsyncClientManager = new TAsyncClientManager();
-                        } catch (IOException e) {
-                            Log.e(TAG, "Thrift Client Initialization Failed.");
-                            Log.e(TAG, e.getLocalizedMessage());
-                        }
-                        try {
-                            getAsyncClient().hello("testing message",new HelloCallBack());
-                        } catch (Exception e) {
-                            Log.e(TAG, e.getLocalizedMessage());
-                        }
-*/
-                        TTransport transport = new TSocket("localhost",9091);
-                        try {
-                            transport.open();
-                            Log.d(TAG,"client : open!");
-                        } catch (TTransportException e) {
-                            e.printStackTrace();
-                        }
-                        TProtocol protocol = new TBinaryProtocol(transport);
-                        HelloService.Client client = new HelloService.Client(protocol);
-                        try {
-                            Log.d(TAG, "client : send!");
-                            client.hello("client data!");
-                        } catch (TException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                thread.start();
-            }
+            thread.start();
         });
 
-        mServerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mServerBtn.setOnClickListener(v -> {
 
-                Thread thread = new Thread(){
-                    @Override
-                    public void run() {
-                        super.run();
-                        HelloServiceAPI hserver = new HelloServiceAPI();
-                        HelloService.Processor processor = new HelloService.Processor(hserver);
-                        TServerTransport transport = null;
-                        try {
-                            transport = new TServerSocket(9091);
-                        } catch (TTransportException e) {
-                            e.printStackTrace();
-                        }
-                        TServer server = new TSimpleServer(new TServer.Args(transport).processor(processor));
-                        Log.d(TAG,"start server");
-                        server.serve();
-                    }
-                };
-
-                thread.start();
-            }
+            Thread thread = new Thread(() -> {
+                HelloServiceAPI hserver = new HelloServiceAPI();
+                HelloService.Processor processor = new HelloService.Processor(hserver);
+                TServerTransport transport = null;
+                try {
+                    transport = new TServerSocket(9091);
+                } catch (TTransportException e) {
+                    e.printStackTrace();
+                }
+                TServer server = new TSimpleServer(new TServer.Args(transport).processor(processor));
+                Log.d(TAG,"start server");
+                server.serve();
+            });
+            thread.start();
         });
 
-        //Intent intent = new Intent(MainActivity.this, MessageService.class);
-        //startService(intent);
+        Intent intent = new Intent(MainActivity.this, MainService.class);
+        startService(intent);
     }
 
     private HelloService.AsyncClient getAsyncClient() throws IOException {
