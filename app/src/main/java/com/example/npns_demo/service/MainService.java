@@ -36,6 +36,7 @@ public class MainService extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
+    // get client ip address
     public void getClientUrl() {
         Thread thread = new Thread(() -> {
             try {
