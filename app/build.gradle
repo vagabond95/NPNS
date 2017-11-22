@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+    }
 }
 
 repositories {
@@ -39,6 +43,7 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
-    implementation 'com.android.support:recyclerview-v7:21.0.+'
-
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation group: 'org.apache.thrift', name: 'libthrift', version: '0.10.0'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.5.8'
 }
