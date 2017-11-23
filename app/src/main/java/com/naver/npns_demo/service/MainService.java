@@ -17,6 +17,7 @@ public class MainService extends Service {
     private final String TAG = MainService.class.getCanonicalName();
 
     private static Context mContext;
+
     public MainService() {
     }
 
@@ -28,7 +29,7 @@ public class MainService extends Service {
 
     private static Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
-            Log.d("Msg","handler");
+            Log.d("Msg", "handler");
             showNotification(msg);
         }
     };
@@ -62,8 +63,8 @@ public class MainService extends Service {
 
         NotificationManager notificationManager
                 = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0,mBuilder.build());
-        Log.d("Message",data.getTitle());
-        Log.d("Message",data.getBody());
+        notificationManager.notify(0, mBuilder.build());
+        Log.d("Message", data.getTitle());
+        Log.d("Message", data.getBody());
     }
 }
