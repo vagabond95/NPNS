@@ -1,4 +1,4 @@
-package com.example.npns_demo.service;
+package com.naver.npns_demo.service;
 
 import android.app.Service;
 import android.content.Intent;

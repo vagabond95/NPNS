@@ -1,4 +1,4 @@
-package com.example.npns_demo;
+package com.naver.npns_demo;
 
 import android.app.Application;
 
@@ -7,7 +7,8 @@ import android.app.Application;
  */
 
 public class BaseApplication extends Application{
-    public static final String BROKER_URL = "tcp://iot.eclipse.org:1883";
+    public static final String SERVER_URL = "http://210.89.180.85:18090/";
+    public static final int THRIFT_PORT = 10000;
 
     @Override
     public void onCreate() {

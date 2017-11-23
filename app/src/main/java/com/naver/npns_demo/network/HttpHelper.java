@@ -1,12 +1,8 @@
-package com.example.npns_demo.util;
+package com.naver.npns_demo.network;
 
 import android.util.Log;
 
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;

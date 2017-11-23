@@ -1,4 +1,4 @@
-package com.example.npns_demo;
+package com.naver.npns_demo;
 
 import org.junit.Test;
 
@@ -13,5 +13,9 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
+    }
+
+    public void check_network() {
+
     }
 }

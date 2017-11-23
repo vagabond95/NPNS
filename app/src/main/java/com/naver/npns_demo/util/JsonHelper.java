@@ -1,4 +1,4 @@
-package com.example.npns_demo.util;
+package com.naver.npns_demo.util;
 
 import org.json.JSONObject;
 
