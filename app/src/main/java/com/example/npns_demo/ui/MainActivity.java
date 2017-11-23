@@ -47,10 +47,6 @@ public class MainActivity extends AppCompatActivity {
     private TAsyncClientManager mAsyncClientManager;
     private MenuItem prevMenuItem;
 
-    private static HomeFragment mHomeView;
-    private static ListFragment mListView;
-    private static StateFragment mStateView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
