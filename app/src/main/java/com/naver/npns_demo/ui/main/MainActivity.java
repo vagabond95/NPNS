@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.getCanonicalName();
 
     @BindView(R.id.http_req_btn)
-    Button mHttpRequsetBtn;
+    Button mHttpRequestBtn;
     @BindView(R.id.server_run_btn)
     Button mServerRunBtn;
 
@@ -35,13 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void initView() {
 
-        mHttpRequsetBtn.setOnClickListener(v -> {
-            mPresenter.requestPost();
-        });
+        mHttpRequestBtn.setOnClickListener(v -> mPresenter.requestPost());
 
-        mServerRunBtn.setOnClickListener(v -> {
-            mPresenter.runServer();
-        });
+        mServerRunBtn.setOnClickListener(v -> mPresenter.runServer());
         Intent intent = new Intent(MainActivity.this, MainService.class);
         startService(intent);
     }

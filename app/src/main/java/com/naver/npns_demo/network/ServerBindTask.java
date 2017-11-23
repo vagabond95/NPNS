@@ -3,7 +3,7 @@ package com.naver.npns_demo.network;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.naver.npns_demo.BaseApplication;
+import com.naver.npns_demo.Global;
 import com.naver.npns_demo.model.PushReceiveService;
 import com.naver.npns_demo.model.PushRecvInterface;
 
@@ -27,7 +27,7 @@ public class ServerBindTask extends AsyncTask<String,String,Boolean>{
 
         TServerTransport transport = null;
         try {
-            transport = new TServerSocket(BaseApplication.THRIFT_PORT);
+            transport = new TServerSocket(Global.THRIFT_PORT);
             networkState = true;
             Log.d(TAG, "success bind!");
         } catch (TTransportException e) {

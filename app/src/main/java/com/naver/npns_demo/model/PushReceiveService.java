@@ -6,6 +6,8 @@
  */
 package com.naver.npns_demo.model;
 
+import com.naver.npns_demo.message.PushMessage;
+
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked", "unused"})
 public class PushReceiveService {
 
@@ -13,7 +15,7 @@ public class PushReceiveService {
 
     public java.lang.String ping() throws org.apache.thrift.TException;
 
-    public boolean recv(pushMessage msg) throws org.apache.thrift.TException;
+    public boolean recv(PushMessage msg) throws org.apache.thrift.TException;
 
   }
 
@@ -21,7 +23,7 @@ public class PushReceiveService {
 
     public void ping(org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException;
 
-    public void recv(pushMessage msg, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException;
+    public void recv(PushMessage msg, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -67,13 +69,13 @@ public class PushReceiveService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "ping failed: unknown result");
     }
 
-    public boolean recv(pushMessage msg) throws org.apache.thrift.TException
+    public boolean recv(PushMessage msg) throws org.apache.thrift.TException
     {
       send_recv(msg);
       return recv_recv();
     }
 
-    public void send_recv(pushMessage msg) throws org.apache.thrift.TException
+    public void send_recv(PushMessage msg) throws org.apache.thrift.TException
     {
       recv_args args = new recv_args();
       args.setMsg(msg);
@@ -137,7 +139,7 @@ public class PushReceiveService {
       }
     }
 
-    public void recv(pushMessage msg, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException {
+    public void recv(PushMessage msg, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       recv_call method_call = new recv_call(msg, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -145,8 +147,8 @@ public class PushReceiveService {
     }
 
     public static class recv_call extends org.apache.thrift.async.TAsyncMethodCall<java.lang.Boolean> {
-      private pushMessage msg;
-      public recv_call(pushMessage msg, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      private PushMessage msg;
+      public recv_call(PushMessage msg, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.msg = msg;
       }
@@ -991,7 +993,7 @@ public class PushReceiveService {
     private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new recv_argsStandardSchemeFactory();
     private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new recv_argsTupleSchemeFactory();
 
-    public pushMessage msg; // required
+    public PushMessage msg; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -1056,7 +1058,7 @@ public class PushReceiveService {
     static {
       java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.MSG, new org.apache.thrift.meta_data.FieldMetaData("msg", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, pushMessage.class)));
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, PushMessage.class)));
       metaDataMap = java.util.Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(recv_args.class, metaDataMap);
     }
@@ -1065,7 +1067,7 @@ public class PushReceiveService {
     }
 
     public recv_args(
-      pushMessage msg)
+      PushMessage msg)
     {
       this();
       this.msg = msg;
@@ -1076,7 +1078,7 @@ public class PushReceiveService {
      */
     public recv_args(recv_args other) {
       if (other.isSetMsg()) {
-        this.msg = new pushMessage(other.msg);
+        this.msg = new PushMessage(other.msg);
       }
     }
 
@@ -1089,11 +1091,11 @@ public class PushReceiveService {
       this.msg = null;
     }
 
-    public pushMessage getMsg() {
+    public PushMessage getMsg() {
       return this.msg;
     }
 
-    public recv_args setMsg(pushMessage msg) {
+    public recv_args setMsg(PushMessage msg) {
       this.msg = msg;
       return this;
     }
@@ -1119,7 +1121,7 @@ public class PushReceiveService {
         if (value == null) {
           unsetMsg();
         } else {
-          setMsg((pushMessage)value);
+          setMsg((PushMessage)value);
         }
         break;
 
@@ -1279,7 +1281,7 @@ public class PushReceiveService {
           switch (schemeField.id) {
             case 1: // MSG
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.msg = new pushMessage();
+                struct.msg = new PushMessage();
                 struct.msg.read(iprot);
                 struct.setMsgIsSet(true);
               } else { 
@@ -1338,7 +1340,7 @@ public class PushReceiveService {
         org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.msg = new pushMessage();
+          struct.msg = new PushMessage();
           struct.msg.read(iprot);
           struct.setMsgIsSet(true);
         }

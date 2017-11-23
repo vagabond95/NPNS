@@ -1,6 +1,6 @@
 package com.naver.npns_demo.model;
 
-import com.google.gson.Gson;
+import com.naver.npns_demo.Global;
 
 public class ClientInfo {
     private String ip;
@@ -12,6 +12,6 @@ public class ClientInfo {
     }
 
     public String getJson() {
-        return new Gson().toJson(this);
+        return Global.gson.toJson(this);
     }
 }
