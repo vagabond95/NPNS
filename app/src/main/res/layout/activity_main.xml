@@ -13,26 +13,26 @@
         android:padding="16dp">
 
         <Button
-            android:layout_width="64dp"
-            android:layout_height="32dp"
-            android:text="Client!"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="Http Request!"
             android:textSize="12dp"
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:background="#2DB400"
             android:layout_marginTop="20dp"
-            android:id="@+id/client_btn"/>
+            android:id="@+id/http_req_btn"/>
 
         <Button
-            android:layout_width="64dp"
-            android:layout_height="32dp"
-            android:text="Server!"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="Thrift Server run!"
             android:textSize="12dp"
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:background="#2DB400"
-            android:layout_marginTop="20dp"
-            android:id="@+id/server_btn"/>
+            android:layout_marginTop="50dp"
+            android:id="@+id/server_run_btn"/>
 
     </LinearLayout>
 

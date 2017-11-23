@@ -1,11 +1,16 @@
 package com.naver.npns_demo.model;
 
+import android.util.Log;
+
 import org.apache.thrift.TException;
 
 public class PushRecvInterface implements PushReceiveService.Iface{
+    private final String TAG = PushRecvInterface.class.getCanonicalName();
+
     @Override
     public String ping() throws TException {
-        return "ping!!";
+        Log.d(TAG, "pong");
+        return "pong!!";
     }
 
     @Override
