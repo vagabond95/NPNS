@@ -13,7 +13,7 @@ public class ClientInfoHelper extends Thread {
 
     private final String TAG = ClientInfoHelper.class.getCanonicalName();
 
-    private final String HOST_URL = "http://10.83.37.21:18090/request_connect/";
+    private final String HOST_URL = "http://10.83.32.40:18090/request_connect/";
 
     private Context mContext;
 

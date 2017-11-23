@@ -1,28 +1,43 @@
 package com.naver.npns_demo.service;
 
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import java.io.IOException;
-import java.net.Socket;
+import com.naver.npns_demo.model.MessageInfo;
 
 public class MainService extends Service {
 
     private final String TAG = MainService.class.getCanonicalName();
 
+    private static Context mContext;
     public MainService() {
     }
-
-    private String mClientUrl;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = getApplicationContext();
+    }
 
-        Log.d(TAG, "Service start");
-        getClientUrl();
+    private static Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            Log.d("Msg","handler");
+            showNotification(msg);
+        }
+    };
+
+
+    public static void handlePusgMsg(MessageInfo msg1) {
+        Message msg = mHandler.obtainMessage();
+        msg.obj = msg1;
+        mHandler.sendMessage(msg);
     }
 
     @Override
@@ -36,20 +51,19 @@ public class MainService extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    // get client ip address
-    public void getClientUrl() {
-        Thread thread = new Thread(() -> {
-            try {
-                Socket socket = new Socket("www.google.com", 80);
-                String mClientUrl = socket.getLocalAddress().getHostAddress();
-                Log.d(TAG, "local address is : " + mClientUrl);
-                socket.close();
+    private static void showNotification(Message msg) {
+        MessageInfo data = (MessageInfo) msg.obj;
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+        NotificationCompat.Builder mBuilder
+                = new NotificationCompat.Builder(mContext)
+                .setSmallIcon(android.support.v4.R.drawable.notification_icon_background)
+                .setContentTitle(data.getTitle())
+                .setContentText(data.getBody());
 
-        thread.start();
+        NotificationManager notificationManager
+                = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0,mBuilder.build());
+        Log.d("Message",data.getTitle());
+        Log.d("Message",data.getBody());
     }
 }

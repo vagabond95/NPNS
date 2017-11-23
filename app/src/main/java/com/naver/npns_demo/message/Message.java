@@ -4,25 +4,25 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package com.naver.npns_demo.model;
+package com.naver.npns_demo.message;
 
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked", "unused"})
-public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMessage._Fields>, java.io.Serializable, Cloneable, Comparable<pushMessage> {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("pushMessage");
+public class Message implements org.apache.thrift.TBase<Message, Message._Fields>, java.io.Serializable, Cloneable, Comparable<Message> {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Message");
 
-  private static final org.apache.thrift.protocol.TField SEQ_FIELD_DESC = new org.apache.thrift.protocol.TField("seq", org.apache.thrift.protocol.TType.I32, (short)1);
-  private static final org.apache.thrift.protocol.TField MSG_FIELD_DESC = new org.apache.thrift.protocol.TField("msg", org.apache.thrift.protocol.TType.STRUCT, (short)2);
+  private static final org.apache.thrift.protocol.TField TITLE_FIELD_DESC = new org.apache.thrift.protocol.TField("title", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField MESSAGE_FIELD_DESC = new org.apache.thrift.protocol.TField("message", org.apache.thrift.protocol.TType.STRING, (short)2);
 
-  private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new pushMessageStandardSchemeFactory();
-  private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new pushMessageTupleSchemeFactory();
+  private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new MessageStandardSchemeFactory();
+  private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new MessageTupleSchemeFactory();
 
-  public int seq; // required
-  public Message msg; // required
+  public java.lang.String title; // required
+  public java.lang.String message; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    SEQ((short)1, "seq"),
-    MSG((short)2, "msg");
+    TITLE((short)1, "title"),
+    MESSAGE((short)2, "message");
 
     private static final java.util.Map<java.lang.String, _Fields> byName = new java.util.HashMap<java.lang.String, _Fields>();
 
@@ -37,10 +37,10 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // SEQ
-          return SEQ;
-        case 2: // MSG
-          return MSG;
+        case 1: // TITLE
+          return TITLE;
+        case 2: // MESSAGE
+          return MESSAGE;
         default:
           return null;
       }
@@ -81,116 +81,114 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
   }
 
   // isset id assignments
-  private static final int __SEQ_ISSET_ID = 0;
-  private byte __isset_bitfield = 0;
   public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.SEQ, new org.apache.thrift.meta_data.FieldMetaData("seq", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
-    tmpMap.put(_Fields.MSG, new org.apache.thrift.meta_data.FieldMetaData("msg", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Message.class)));
+    tmpMap.put(_Fields.TITLE, new org.apache.thrift.meta_data.FieldMetaData("title", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.MESSAGE, new org.apache.thrift.meta_data.FieldMetaData("message", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = java.util.Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(pushMessage.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Message.class, metaDataMap);
   }
 
-  public pushMessage() {
+  public Message() {
   }
 
-  public pushMessage(
-    int seq,
-    Message msg)
+  public Message(
+    java.lang.String title,
+    java.lang.String message)
   {
     this();
-    this.seq = seq;
-    setSeqIsSet(true);
-    this.msg = msg;
+    this.title = title;
+    this.message = message;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public pushMessage(pushMessage other) {
-    __isset_bitfield = other.__isset_bitfield;
-    this.seq = other.seq;
-    if (other.isSetMsg()) {
-      this.msg = new Message(other.msg);
+  public Message(Message other) {
+    if (other.isSetTitle()) {
+      this.title = other.title;
+    }
+    if (other.isSetMessage()) {
+      this.message = other.message;
     }
   }
 
-  public pushMessage deepCopy() {
-    return new pushMessage(this);
+  public Message deepCopy() {
+    return new Message(this);
   }
 
   @Override
   public void clear() {
-    setSeqIsSet(false);
-    this.seq = 0;
-    this.msg = null;
+    this.title = null;
+    this.message = null;
   }
 
-  public int getSeq() {
-    return this.seq;
+  public java.lang.String getTitle() {
+    return this.title;
   }
 
-  public pushMessage setSeq(int seq) {
-    this.seq = seq;
-    setSeqIsSet(true);
+  public Message setTitle(java.lang.String title) {
+    this.title = title;
     return this;
   }
 
-  public void unsetSeq() {
-    __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __SEQ_ISSET_ID);
+  public void unsetTitle() {
+    this.title = null;
   }
 
-  /** Returns true if field seq is set (has been assigned a value) and false otherwise */
-  public boolean isSetSeq() {
-    return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __SEQ_ISSET_ID);
+  /** Returns true if field title is set (has been assigned a value) and false otherwise */
+  public boolean isSetTitle() {
+    return this.title != null;
   }
 
-  public void setSeqIsSet(boolean value) {
-    __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __SEQ_ISSET_ID, value);
-  }
-
-  public Message getMsg() {
-    return this.msg;
-  }
-
-  public pushMessage setMsg(Message msg) {
-    this.msg = msg;
-    return this;
-  }
-
-  public void unsetMsg() {
-    this.msg = null;
-  }
-
-  /** Returns true if field msg is set (has been assigned a value) and false otherwise */
-  public boolean isSetMsg() {
-    return this.msg != null;
-  }
-
-  public void setMsgIsSet(boolean value) {
+  public void setTitleIsSet(boolean value) {
     if (!value) {
-      this.msg = null;
+      this.title = null;
+    }
+  }
+
+  public java.lang.String getMessage() {
+    return this.message;
+  }
+
+  public Message setMessage(java.lang.String message) {
+    this.message = message;
+    return this;
+  }
+
+  public void unsetMessage() {
+    this.message = null;
+  }
+
+  /** Returns true if field message is set (has been assigned a value) and false otherwise */
+  public boolean isSetMessage() {
+    return this.message != null;
+  }
+
+  public void setMessageIsSet(boolean value) {
+    if (!value) {
+      this.message = null;
     }
   }
 
   public void setFieldValue(_Fields field, java.lang.Object value) {
     switch (field) {
-    case SEQ:
+    case TITLE:
       if (value == null) {
-        unsetSeq();
+        unsetTitle();
       } else {
-        setSeq((java.lang.Integer)value);
+        setTitle((java.lang.String)value);
       }
       break;
 
-    case MSG:
+    case MESSAGE:
       if (value == null) {
-        unsetMsg();
+        unsetMessage();
       } else {
-        setMsg((Message)value);
+        setMessage((java.lang.String)value);
       }
       break;
 
@@ -199,11 +197,11 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
 
   public java.lang.Object getFieldValue(_Fields field) {
     switch (field) {
-    case SEQ:
-      return getSeq();
+    case TITLE:
+      return getTitle();
 
-    case MSG:
-      return getMsg();
+    case MESSAGE:
+      return getMessage();
 
     }
     throw new java.lang.IllegalStateException();
@@ -216,10 +214,10 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
     }
 
     switch (field) {
-    case SEQ:
-      return isSetSeq();
-    case MSG:
-      return isSetMsg();
+    case TITLE:
+      return isSetTitle();
+    case MESSAGE:
+      return isSetMessage();
     }
     throw new java.lang.IllegalStateException();
   }
@@ -228,32 +226,32 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
   public boolean equals(java.lang.Object that) {
     if (that == null)
       return false;
-    if (that instanceof pushMessage)
-      return this.equals((pushMessage)that);
+    if (that instanceof Message)
+      return this.equals((Message)that);
     return false;
   }
 
-  public boolean equals(pushMessage that) {
+  public boolean equals(Message that) {
     if (that == null)
       return false;
     if (this == that)
       return true;
 
-    boolean this_present_seq = true;
-    boolean that_present_seq = true;
-    if (this_present_seq || that_present_seq) {
-      if (!(this_present_seq && that_present_seq))
+    boolean this_present_title = true && this.isSetTitle();
+    boolean that_present_title = true && that.isSetTitle();
+    if (this_present_title || that_present_title) {
+      if (!(this_present_title && that_present_title))
         return false;
-      if (this.seq != that.seq)
+      if (!this.title.equals(that.title))
         return false;
     }
 
-    boolean this_present_msg = true && this.isSetMsg();
-    boolean that_present_msg = true && that.isSetMsg();
-    if (this_present_msg || that_present_msg) {
-      if (!(this_present_msg && that_present_msg))
+    boolean this_present_message = true && this.isSetMessage();
+    boolean that_present_message = true && that.isSetMessage();
+    if (this_present_message || that_present_message) {
+      if (!(this_present_message && that_present_message))
         return false;
-      if (!this.msg.equals(that.msg))
+      if (!this.message.equals(that.message))
         return false;
     }
 
@@ -264,39 +262,41 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
   public int hashCode() {
     int hashCode = 1;
 
-    hashCode = hashCode * 8191 + seq;
+    hashCode = hashCode * 8191 + ((isSetTitle()) ? 131071 : 524287);
+    if (isSetTitle())
+      hashCode = hashCode * 8191 + title.hashCode();
 
-    hashCode = hashCode * 8191 + ((isSetMsg()) ? 131071 : 524287);
-    if (isSetMsg())
-      hashCode = hashCode * 8191 + msg.hashCode();
+    hashCode = hashCode * 8191 + ((isSetMessage()) ? 131071 : 524287);
+    if (isSetMessage())
+      hashCode = hashCode * 8191 + message.hashCode();
 
     return hashCode;
   }
 
   @Override
-  public int compareTo(pushMessage other) {
+  public int compareTo(Message other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
 
-    lastComparison = java.lang.Boolean.valueOf(isSetSeq()).compareTo(other.isSetSeq());
+    lastComparison = java.lang.Boolean.valueOf(isSetTitle()).compareTo(other.isSetTitle());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetSeq()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.seq, other.seq);
+    if (isSetTitle()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.title, other.title);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = java.lang.Boolean.valueOf(isSetMsg()).compareTo(other.isSetMsg());
+    lastComparison = java.lang.Boolean.valueOf(isSetMessage()).compareTo(other.isSetMessage());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetMsg()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.msg, other.msg);
+    if (isSetMessage()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.message, other.message);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -318,18 +318,22 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
 
   @Override
   public java.lang.String toString() {
-    java.lang.StringBuilder sb = new java.lang.StringBuilder("pushMessage(");
+    java.lang.StringBuilder sb = new java.lang.StringBuilder("Message(");
     boolean first = true;
 
-    sb.append("seq:");
-    sb.append(this.seq);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("msg:");
-    if (this.msg == null) {
+    sb.append("title:");
+    if (this.title == null) {
       sb.append("null");
     } else {
-      sb.append(this.msg);
+      sb.append(this.title);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("message:");
+    if (this.message == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.message);
     }
     first = false;
     sb.append(")");
@@ -339,9 +343,6 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
     // check for sub-struct validity
-    if (msg != null) {
-      msg.validate();
-    }
   }
 
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
@@ -354,23 +355,21 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
 
   private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, java.lang.ClassNotFoundException {
     try {
-      // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
-      __isset_bitfield = 0;
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
     } catch (org.apache.thrift.TException te) {
       throw new java.io.IOException(te);
     }
   }
 
-  private static class pushMessageStandardSchemeFactory implements org.apache.thrift.scheme.SchemeFactory {
-    public pushMessageStandardScheme getScheme() {
-      return new pushMessageStandardScheme();
+  private static class MessageStandardSchemeFactory implements org.apache.thrift.scheme.SchemeFactory {
+    public MessageStandardScheme getScheme() {
+      return new MessageStandardScheme();
     }
   }
 
-  private static class pushMessageStandardScheme extends org.apache.thrift.scheme.StandardScheme<pushMessage> {
+  private static class MessageStandardScheme extends org.apache.thrift.scheme.StandardScheme<Message> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, pushMessage struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, Message struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -380,19 +379,18 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
           break;
         }
         switch (schemeField.id) {
-          case 1: // SEQ
-            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.seq = iprot.readI32();
-              struct.setSeqIsSet(true);
+          case 1: // TITLE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.title = iprot.readString();
+              struct.setTitleIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // MSG
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.msg = new Message();
-              struct.msg.read(iprot);
-              struct.setMsgIsSet(true);
+          case 2: // MESSAGE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.message = iprot.readString();
+              struct.setMessageIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -408,16 +406,18 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, pushMessage struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, Message struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      oprot.writeFieldBegin(SEQ_FIELD_DESC);
-      oprot.writeI32(struct.seq);
-      oprot.writeFieldEnd();
-      if (struct.msg != null) {
-        oprot.writeFieldBegin(MSG_FIELD_DESC);
-        struct.msg.write(oprot);
+      if (struct.title != null) {
+        oprot.writeFieldBegin(TITLE_FIELD_DESC);
+        oprot.writeString(struct.title);
+        oprot.writeFieldEnd();
+      }
+      if (struct.message != null) {
+        oprot.writeFieldBegin(MESSAGE_FIELD_DESC);
+        oprot.writeString(struct.message);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -426,45 +426,44 @@ public class pushMessage implements org.apache.thrift.TBase<pushMessage, pushMes
 
   }
 
-  private static class pushMessageTupleSchemeFactory implements org.apache.thrift.scheme.SchemeFactory {
-    public pushMessageTupleScheme getScheme() {
-      return new pushMessageTupleScheme();
+  private static class MessageTupleSchemeFactory implements org.apache.thrift.scheme.SchemeFactory {
+    public MessageTupleScheme getScheme() {
+      return new MessageTupleScheme();
     }
   }
 
-  private static class pushMessageTupleScheme extends org.apache.thrift.scheme.TupleScheme<pushMessage> {
+  private static class MessageTupleScheme extends org.apache.thrift.scheme.TupleScheme<Message> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, pushMessage struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, Message struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TTupleProtocol oprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
       java.util.BitSet optionals = new java.util.BitSet();
-      if (struct.isSetSeq()) {
+      if (struct.isSetTitle()) {
         optionals.set(0);
       }
-      if (struct.isSetMsg()) {
+      if (struct.isSetMessage()) {
         optionals.set(1);
       }
       oprot.writeBitSet(optionals, 2);
-      if (struct.isSetSeq()) {
-        oprot.writeI32(struct.seq);
+      if (struct.isSetTitle()) {
+        oprot.writeString(struct.title);
       }
-      if (struct.isSetMsg()) {
-        struct.msg.write(oprot);
+      if (struct.isSetMessage()) {
+        oprot.writeString(struct.message);
       }
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, pushMessage struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, Message struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
       java.util.BitSet incoming = iprot.readBitSet(2);
       if (incoming.get(0)) {
-        struct.seq = iprot.readI32();
-        struct.setSeqIsSet(true);
+        struct.title = iprot.readString();
+        struct.setTitleIsSet(true);
       }
       if (incoming.get(1)) {
-        struct.msg = new Message();
-        struct.msg.read(iprot);
-        struct.setMsgIsSet(true);
+        struct.message = iprot.readString();
+        struct.setMessageIsSet(true);
       }
     }
   }
