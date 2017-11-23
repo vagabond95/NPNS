@@ -1,4 +1,4 @@
-package com.example.npns_demo;
+package com.naver.npns_demo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

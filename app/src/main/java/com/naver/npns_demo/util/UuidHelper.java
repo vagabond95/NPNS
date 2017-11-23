@@ -1,19 +1,15 @@
-package com.example.npns_demo.util;
+package com.naver.npns_demo.util;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.provider.Settings.Secure;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.util.UUID;
-
-import static android.content.ContentValues.TAG;
 
 public class UuidHelper {
     public static final String PREFS_FILE = "uuid_file.xml";
