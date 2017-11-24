@@ -3,8 +3,8 @@ package com.naver.npns.network;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.naver.npns.Callback.OnMsgIncomedListener;
 import com.naver.npns.Global;
-import com.naver.npns.model.OnMsgIncomedListener;
 import com.naver.npns.model.PushReceiveService;
 import com.naver.npns.model.PushServiceModule;
 

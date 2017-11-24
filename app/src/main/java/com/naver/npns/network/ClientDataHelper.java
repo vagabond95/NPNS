@@ -9,15 +9,16 @@ import com.naver.npns.util.UuidHelper;
 import java.io.IOException;
 import java.net.Socket;
 
+import static com.naver.npns.Global.HOST_CONNECT_PATH;
 import static com.naver.npns.Global.HOST_URL;
 
-public class ClientInfoHelper extends Thread {
+public class ClientDataHelper extends Thread {
 
-    private final String TAG = ClientInfoHelper.class.getCanonicalName();
+    private final String TAG = ClientDataHelper.class.getCanonicalName();
 
     private Context mContext;
 
-    public ClientInfoHelper(Context context) {
+    public ClientDataHelper(Context context) {
         mContext = context;
     }
 
@@ -32,7 +33,7 @@ public class ClientInfoHelper extends Thread {
             ClientData info = new ClientData(url, uuid);
 
             HttpHelper httpHelper = new HttpHelper();
-            httpHelper.post(HOST_URL, info.getJson());
+            httpHelper.post(HOST_URL + HOST_CONNECT_PATH, info.getJson());
 
             Log.d(TAG, "[HTTP] Json : " + info.getJson());
         } catch (IOException e) {

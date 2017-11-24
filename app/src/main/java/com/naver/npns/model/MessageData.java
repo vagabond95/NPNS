@@ -4,10 +4,12 @@ public class MessageData {
     private int seq;
     private String title;
     private String body;
+    private String time;
 
-    public MessageData(String title, String body) {
+    public MessageData(String title, String body, String time) {
         this.title = title;
         this.body = body;
+        this.time = time;
     }
 
     public MessageData(int seq, String title, String body) {
@@ -26,5 +28,9 @@ public class MessageData {
 
     public String getBody() {
         return body;
+    }
+
+    public String getTime() {
+        return time;
     }
 }

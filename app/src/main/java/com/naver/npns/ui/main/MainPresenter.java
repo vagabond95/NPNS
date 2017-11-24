@@ -1,9 +1,13 @@
 package com.naver.npns.ui.main;
 
 import android.support.annotation.NonNull;
+import android.widget.Toast;
 
+import com.naver.npns.Global;
+import com.naver.npns.network.ClientDataHelper;
 import com.naver.npns.network.ServerRunTask;
-import com.naver.npns.network.ClientInfoHelper;
+
+import static com.naver.npns.Global.HOST_URL;
 
 public class MainPresenter {
 
@@ -20,7 +24,8 @@ public class MainPresenter {
     }
 
     public void requestPost() {
-        ClientInfoHelper clinetHelper = new ClientInfoHelper(mView.getApplicationContext());
+        ClientDataHelper clinetHelper = new ClientDataHelper(mView.getApplicationContext());
         clinetHelper.start();
+        Toast.makeText(mView.getApplicationContext(), "Connect " + HOST_URL, Toast.LENGTH_LONG).show();
     }
 }
