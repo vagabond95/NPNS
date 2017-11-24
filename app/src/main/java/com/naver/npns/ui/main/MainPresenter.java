@@ -1,9 +1,9 @@
-package com.naver.npns_demo.ui.main;
+package com.naver.npns.ui.main;
 
 import android.support.annotation.NonNull;
 
-import com.naver.npns_demo.network.ServerBindTask;
-import com.naver.npns_demo.network.ClientInfoHelper;
+import com.naver.npns.network.ServerRunTask;
+import com.naver.npns.network.ClientInfoHelper;
 
 public class MainPresenter {
 
@@ -15,8 +15,8 @@ public class MainPresenter {
         this.mView = view;
     }
 
-    public void runServer() {
-        new ServerBindTask().execute();
+    public void runServer(MainListAdapter listener) {
+        new ServerRunTask().execute(listener);
     }
 
     public void requestPost() {

@@ -1,4 +1,4 @@
-package com.naver.npns_demo.network;
+package com.naver.npns.network;
 
 import android.util.Log;
 
@@ -41,13 +41,13 @@ public class HttpHelper {
     private Callback callbackAfterRequest = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
-            Log.d(TAG, "response fail!");
+            Log.d(TAG, "[HTTP] Response fail!");
 
         }
 
         @Override
         public void onResponse(Call call, Response response) throws IOException {
-            Log.d(TAG, "response success!");
+            Log.d(TAG, "[HTTP] Response success!");
         }
     };
 }

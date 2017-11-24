@@ -1,4 +1,4 @@
-package com.naver.npns_demo.service;
+package com.naver.npns.service;
 
 import android.app.NotificationManager;
 import android.app.Service;
@@ -10,7 +10,7 @@ import android.os.Message;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.naver.npns_demo.model.MessageInfo;
+import com.naver.npns.model.MessageData;
 
 public class MainService extends Service {
 
@@ -29,15 +29,15 @@ public class MainService extends Service {
 
     private static Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
-            Log.d("Msg", "handler");
+            Log.d("Message", "[PUSH] Message handle");
             showNotification(msg);
         }
     };
 
 
-    public static void handlePusgMsg(MessageInfo msg1) {
+    public static void handlePusgMsg(MessageData messageData) {
         Message msg = mHandler.obtainMessage();
-        msg.obj = msg1;
+        msg.obj = messageData;
         mHandler.sendMessage(msg);
     }
 
@@ -53,7 +53,7 @@ public class MainService extends Service {
     }
 
     private static void showNotification(Message msg) {
-        MessageInfo data = (MessageInfo) msg.obj;
+        MessageData data = (MessageData) msg.obj;
 
         NotificationCompat.Builder mBuilder
                 = new NotificationCompat.Builder(mContext)
@@ -64,7 +64,7 @@ public class MainService extends Service {
         NotificationManager notificationManager
                 = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, mBuilder.build());
-        Log.d("Message", data.getTitle());
-        Log.d("Message", data.getBody());
+        Log.d("Message", "[PUSH] Title : " + data.getTitle());
+        Log.d("Message", "[PUSH] body : " + data.getBody());
     }
 }

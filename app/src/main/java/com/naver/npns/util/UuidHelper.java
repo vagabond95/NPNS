@@ -1,4 +1,4 @@
-package com.naver.npns_demo.util;
+package com.naver.npns.util;
 
 import android.Manifest;
 import android.content.Context;

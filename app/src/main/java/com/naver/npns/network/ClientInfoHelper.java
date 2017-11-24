@@ -1,19 +1,19 @@
-package com.naver.npns_demo.network;
+package com.naver.npns.network;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.naver.npns_demo.model.ClientInfo;
-import com.naver.npns_demo.util.UuidHelper;
+import com.naver.npns.model.ClientData;
+import com.naver.npns.util.UuidHelper;
 
 import java.io.IOException;
 import java.net.Socket;
 
+import static com.naver.npns.Global.HOST_URL;
+
 public class ClientInfoHelper extends Thread {
 
     private final String TAG = ClientInfoHelper.class.getCanonicalName();
-
-    private final String HOST_URL = "http://10.83.32.40:18090/request_connect/";
 
     private Context mContext;
 
@@ -29,12 +29,12 @@ public class ClientInfoHelper extends Thread {
             url = socket.getLocalAddress().getHostAddress();
             socket.close();
             String uuid = UuidHelper.getUuid(mContext);
-            ClientInfo info = new ClientInfo(url, uuid);
+            ClientData info = new ClientData(url, uuid);
 
             HttpHelper httpHelper = new HttpHelper();
             httpHelper.post(HOST_URL, info.getJson());
 
-            Log.d(TAG, info.getJson());
+            Log.d(TAG, "[HTTP] Json : " + info.getJson());
         } catch (IOException e) {
             e.printStackTrace();
         }
