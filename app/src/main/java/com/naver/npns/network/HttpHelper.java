@@ -1,4 +1,4 @@
-package com.naver.npns_demo.network;
+package com.naver.npns.network;
 
 import android.util.Log;
 

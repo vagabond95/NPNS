@@ -1,4 +1,4 @@
-package com.naver.npns_demo.service;
+package com.naver.npns.service;
 
 import android.app.NotificationManager;
 import android.app.Service;
@@ -10,7 +10,7 @@ import android.os.Message;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.naver.npns_demo.model.MessageInfo;
+import com.naver.npns.model.MessageInfo;
 
 public class MainService extends Service {
 

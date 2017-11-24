@@ -4,9 +4,9 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package com.naver.npns_demo.model;
+package com.naver.npns.model;
 
-import com.naver.npns_demo.message.PushMessage;
+import com.naver.npns.message.PushMessage;
 
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked", "unused"})
 public class PushReceiveService {

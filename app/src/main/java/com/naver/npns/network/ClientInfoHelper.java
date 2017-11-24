@@ -1,10 +1,10 @@
-package com.naver.npns_demo.network;
+package com.naver.npns.network;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.naver.npns_demo.model.ClientInfo;
-import com.naver.npns_demo.util.UuidHelper;
+import com.naver.npns.model.ClientInfo;
+import com.naver.npns.util.UuidHelper;
 
 import java.io.IOException;
 import java.net.Socket;

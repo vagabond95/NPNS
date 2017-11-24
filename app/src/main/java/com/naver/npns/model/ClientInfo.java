@@ -1,6 +1,6 @@
-package com.naver.npns_demo.model;
+package com.naver.npns.model;
 
-import com.naver.npns_demo.Global;
+import com.naver.npns.Global;
 
 public class ClientInfo {
     private String ip;

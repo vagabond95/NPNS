@@ -1,4 +1,4 @@
-package com.naver.npns_demo.model;
+package com.naver.npns.model;
 
 public class MessageInfo {
     private int seq;
