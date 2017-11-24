@@ -2,10 +2,8 @@ package com.naver.npns.ui.main;
 
 import android.support.annotation.NonNull;
 
-import com.naver.npns.model.OnMsgIncomedListener;
-import com.naver.npns.network.ServerBindTask;
+import com.naver.npns.network.ServerRunTask;
 import com.naver.npns.network.ClientInfoHelper;
-import com.naver.npns.ui.list.ListActivity;
 
 public class MainPresenter {
 
@@ -17,8 +15,8 @@ public class MainPresenter {
         this.mView = view;
     }
 
-    public void runServer(ListActivity.MsgListAdapter listener) {
-        new ServerBindTask().execute(listener);
+    public void runServer(MainListAdapter listener) {
+        new ServerRunTask().execute(listener);
     }
 
     public void requestPost() {

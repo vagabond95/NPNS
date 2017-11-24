@@ -2,11 +2,11 @@ package com.naver.npns.model;
 
 import com.naver.npns.Global;
 
-public class ClientInfo {
+public class ClientData {
     private String ip;
     private String uuid;
 
-    public ClientInfo(String ip, String uuid) {
+    public ClientData(String ip, String uuid) {
         this.ip = ip;
         this.uuid = uuid;
     }

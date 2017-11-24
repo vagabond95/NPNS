@@ -28,7 +28,6 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name="com.naver.npns.ui.list.ListActivity"></activity>
     </application>
 
 </manifest>

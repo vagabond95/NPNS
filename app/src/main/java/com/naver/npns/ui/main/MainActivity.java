@@ -3,29 +3,29 @@ package com.naver.npns.ui.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 
 import com.naver.npns.R;
 import com.naver.npns.service.MainService;
-import com.naver.npns.ui.list.ListActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.naver.npns.ui.list.ListActivity.KEY_ADAPTER_EXTRA;
 
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = MainActivity.class.getCanonicalName();
 
+    @BindView(R.id.recycler_view)
+    RecyclerView mRecyclerView;
     @BindView(R.id.http_req_btn)
     Button mHttpRequestBtn;
-    @BindView(R.id.server_run_btn)
-    Button mServerRunBtn;
-    @BindView(R.id.show_list_btn)
-    Button mShowListBtn;
 
     private MainPresenter mPresenter;
+    private MainListAdapter mListAdapter;
+    private LinearLayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +39,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initView() {
-        ListActivity.MsgListAdapter adapter = new ListActivity.MsgListAdapter();
+
+        mListAdapter = new MainListAdapter();
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.scrollToPosition(0);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setAdapter(mListAdapter);
 
         mHttpRequestBtn.setOnClickListener(v -> mPresenter.requestPost());
 
-        mServerRunBtn.setOnClickListener(v -> mPresenter.runServer(adapter));
-
-        mShowListBtn.setOnClickListener(v -> {
-            Intent listIntent = new Intent(MainActivity.this, ListActivity.class);
-            listIntent.putExtra(KEY_ADAPTER_EXTRA, adapter);
-            startActivity(listIntent);
-        });
-
         Intent intent = new Intent(MainActivity.this, MainService.class);
         startService(intent);
+
+        initNetwork();
+    }
+
+    public void initNetwork() {
+        mPresenter.runServer(mListAdapter);
     }
 }
 

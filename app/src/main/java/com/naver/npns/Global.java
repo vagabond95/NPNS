@@ -4,12 +4,8 @@ import android.app.Application;
 
 import com.google.gson.Gson;
 
-/**
- * Created by JHKim on 2017-11-21.
- */
-
 public class Global extends Application{
-    public static final String SERVER_URL = "http://210.89.180.85:18090/";
+    public static final String HOST_URL = "http://10.83.36.184:18090/request_connect/";
     public static final int THRIFT_PORT = 10000;
     public static Gson gson;
 
