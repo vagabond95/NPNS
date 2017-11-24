@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import com.naver.npns.callback.OnMsgIncomedListener;
 import com.naver.npns.message.Message;
 import com.naver.npns.message.PushMessage;
 import com.naver.npns.service.MainService;
