@@ -18,3 +18,9 @@ Naver Push Notification Serveice
 ### 참고사항
 * 서버를 구축하는 코드는 NPNS_server repo에 있음
 * Thrift기반 Push Service 기준에서 Android Client는 Push Message 를 받는 주체이다. 따라서 전체코드에서 Thrift 부분은 Thrift Server를 구현하는 코드가 작성되어 있다. "ServerRunTask.class" 참고
+
+### 실행화면
+<img src="./img/screen.png" width="20%">
+
+### 실행동영상
+https://drive.google.com/open?id=1NY8NCDHixZsrDcupgOstPndFcN_7JKvA
