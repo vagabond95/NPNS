@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.naver.npns.Callback.OnMsgIncomedListener;
+import com.naver.npns.callback.OnMsgIncomedListener;
 import com.naver.npns.Global;
 import com.naver.npns.R;
 import com.naver.npns.message.Message;

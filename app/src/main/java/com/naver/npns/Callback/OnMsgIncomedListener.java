@@ -1,4 +1,4 @@
-package com.naver.npns.Callback;
+package com.naver.npns.callback;
 
 import com.naver.npns.message.Message;
 
